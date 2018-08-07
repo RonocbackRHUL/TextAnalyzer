@@ -1,0 +1,7 @@
+C:\Users\conor\source\repos\TextAnalyzer\TextAnalyzer\bin\Debug\TextAnalyzer.exe.config
+C:\Users\conor\source\repos\TextAnalyzer\TextAnalyzer\bin\Debug\TextAnalyzer.exe
+C:\Users\conor\source\repos\TextAnalyzer\TextAnalyzer\bin\Debug\TextAnalyzer.pdb
+C:\Users\conor\source\repos\TextAnalyzer\TextAnalyzer\obj\Debug\TextAnalyzer.csprojAssemblyReference.cache
+C:\Users\conor\source\repos\TextAnalyzer\TextAnalyzer\obj\Debug\TextAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\conor\source\repos\TextAnalyzer\TextAnalyzer\obj\Debug\TextAnalyzer.exe
+C:\Users\conor\source\repos\TextAnalyzer\TextAnalyzer\obj\Debug\TextAnalyzer.pdb
