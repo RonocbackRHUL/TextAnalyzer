@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TextAnalyzer
 {
-    
+    /// <summary>
+    /// Takes a text file and outputs the three most used words.
+    /// </summary>
     class Program
     {
 
@@ -17,6 +19,7 @@ namespace TextAnalyzer
             String text = "";
             Console.WriteLine("Enter file address:");
             String address = Console.ReadLine();
+            //Attempt to read text file
             try
             {
                 text = System.IO.File.ReadAllText(address);
@@ -26,48 +29,55 @@ namespace TextAnalyzer
                 Console.Error.WriteLine("File not found.");
             }
             String[] words = text.Split(' ');
+            //Analyze most used words
             Analyzer analyzer = new Analyzer(words);
             Console.ReadKey();
 
         }
     }
 
+    /// <summary>
+    /// Analyzes most used words from collection of words.
+    /// </summary>
     class Analyzer
     {
 
         Dictionary<String, int> results;
-        Tuple<String, int> first;
-        Tuple<String, int> second;
-        Tuple<String, int> third;
+        Tuple<String, int> first = Tuple.Create<string, int>("foo", 1);
+        Tuple<String, int> second = Tuple.Create<string, int>("foo", 1);
+        Tuple<String, int> third = Tuple.Create<string, int>("foo", 1);
 
         public Analyzer(String[] words)
         {
             results = new Dictionary<String, int>();
             foreach (String word in words) 
             {
+                //Updates dictionary with word
                 readWord(word);
             }
+            mostUsed();
         }
 
+        /// <summary>
+        /// Update usage dictionary.
+        /// </summary>
+        /// <param name="word"></param>
         private void readWord(String word)
         {
             Console.WriteLine(word);
             if (results.ContainsKey(word))
             {
-                /*
-                int num;
-                results.TryGetValue(word, out num);
-                num++;
-                results.Add(word, num);
-                */
-                results[word] += 1;
+                results[word] += 1; //Increments existing entry
             }
             else
             {
-                results.Add(word, 1);
+                results.Add(word, 1); //Adds new word to dictionary
             }
         }
 
+        /// <summary>
+        /// Creates tuple of word and number of uses then uses it to rank words.
+        /// </summary>
         private void mostUsed()
         {
             
@@ -83,22 +93,29 @@ namespace TextAnalyzer
 
         }
 
+        /// <summary>
+        /// Check ranking of word.
+        /// </summary>
+        /// <param name="t">Tuple of word and its number of uses</param>
         private void rank(Tuple<String, int> t)
         {
             if(t.Item2 > first.Item2)
             {
-                first = t;
+                first = t; //Update first
             }
             else if (t.Item2 > second.Item2)
             {
-                second = t;
+                second = t; //Update second
             }
             else if (t.Item2 > third.Item2)
             {
-                third = t;
+                third = t; //Update third
             }
         }
 
+        /// <summary>
+        /// Print top three ranking of all words.
+        /// </summary>
         private void printRanking()
         {
             Console.Write("Most used word: ");
